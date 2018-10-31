@@ -4,13 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-/**
-* 
-*
-* @author Jorge Alberto Arenas Gutiérrez
-*/
-
-class CreateBranchesTable extends Migration
+class CreateShoopingCartItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,10 +13,9 @@ class CreateBranchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('name', 100);
-            $table->timestampsCustom();
+        Schema::create('shooping_cart_items', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +26,6 @@ class CreateBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('shooping_cart_items');
     }
 }
