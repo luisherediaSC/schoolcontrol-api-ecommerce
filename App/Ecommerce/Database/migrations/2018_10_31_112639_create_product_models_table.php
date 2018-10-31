@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 * @author Jorge Alberto Arenas Gutiérrez
 */
 
-class CreateBranchModelsTable extends Migration
+class CreateProductModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,18 +19,18 @@ class CreateBranchModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('branch_models', function (Blueprint $table) {
+        Schema::create('product_models', function (Blueprint $table) {
             $table->increments('id');
             $table->identity();
-            $table->uuid('branch_id');
+            $table->uuid('product_id');
             $table->uuid('model_id');
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('branch_id')
+            $table->foreign('product_id')
                   ->references('id')
-                  ->on('branches');
-        });        
+                  ->on('products');
+        });
     }
 
     /**
@@ -40,6 +40,6 @@ class CreateBranchModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branch_models');
+        Schema::dropIfExists('product_models');
     }
 }
