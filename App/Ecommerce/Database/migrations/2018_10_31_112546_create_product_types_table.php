@@ -20,7 +20,7 @@ class CreateProductTypesTable extends Migration
     public function up()
     {
         Schema::create('product_types', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->string('name', 100);
         });
     }

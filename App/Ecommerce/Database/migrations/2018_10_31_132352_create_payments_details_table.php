@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+* 
+*
+* @author Jorge Alberto Arenas Gutiérrez
+*/
+
 class CreatePaymentsDetailsTable extends Migration
 {
     /**
@@ -15,7 +21,20 @@ class CreatePaymentsDetailsTable extends Migration
     {
         Schema::create('payments_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->uuid('payment_id');
+            $table->uuid('product_id');
+            $table->uuid('subscriber_id');
+            $table->integer('quantity');
+            $table->decimal('amount', 18, 2);
+            $table->timestampsCustom();
+            $table->softDeletes();
+            
+            $table->foreign('payment_id')
+                  ->references('id')
+                  ->on('payments');
+            $table->foreign('product_id')
+                  ->references('id')
+                  ->on('products');
         });
     }
 
