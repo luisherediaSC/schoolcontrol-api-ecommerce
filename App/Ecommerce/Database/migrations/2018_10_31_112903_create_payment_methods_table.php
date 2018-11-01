@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+* 
+*
+* @author Jorge Alberto Arenas Gutiérrez
+*/
+
 class CreatePaymentMethodsTable extends Migration
 {
     /**
@@ -14,8 +20,8 @@ class CreatePaymentMethodsTable extends Migration
     public function up()
     {
         Schema::create('payment_methods', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            $table->string('name', 70);
         });
     }
 

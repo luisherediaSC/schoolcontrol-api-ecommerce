@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+* 
+*
+* @author Jorge Alberto Arenas Gutiérrez
+*/
+
 class CreateCategoriesProductsTable extends Migration
 {
     /**
@@ -15,7 +21,18 @@ class CreateCategoriesProductsTable extends Migration
     {
         Schema::create('categories_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->identity();
+            $table->integer('category_id')->unsigned();
+            $table->uuid('product_id');
+            $table->timestampsCustom();
+            $table->softDeletes();
+            
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('categories');
+            $table->foreign('product_id')
+                  ->references('id')
+                  ->on('products');
         });
     }
 
