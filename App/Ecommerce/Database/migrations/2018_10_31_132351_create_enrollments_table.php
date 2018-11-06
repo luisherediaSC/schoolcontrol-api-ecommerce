@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 * @author Jorge Alberto Arenas Gutiérrez
 */
 
-class CreatePaymentsDetailsTable extends Migration
+class CreateEnrollmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,22 +19,21 @@ class CreatePaymentsDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments_details', function (Blueprint $table) {
+        Schema::create('enrollments', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('payment_id');
+            $table->uuid('payment_installment_id');
             $table->uuid('identity_id');
-            $table->uuid('enrollment_id');
-            $table->integer('quantity');
-            $table->decimal('amount', 18, 2);
+            $table->smallInteger('enrollment_status_id');
+            $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('payment_id')
-                  ->references('id')
-                  ->on('payments');
-            $table->foreign('enrollment_id')
-                  ->references('id')
-                  ->on('enrollments');
+            $table->foreign('payment_installment_id')
+                ->references('id')
+                ->on('payment_installments');
+            $table->foreign('enrollment_status_id')
+                ->references('id')
+                ->on('enrollment_status');
         });
     }
 
@@ -45,6 +44,6 @@ class CreatePaymentsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments_details');
+        Schema::dropIfExists('enrollments');
     }
 }

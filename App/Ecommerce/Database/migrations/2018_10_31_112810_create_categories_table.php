@@ -25,6 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->uuid('branch_id');
             $table->string('name', 75);
             $table->timestampsCustom();
+            $table->active();
             $table->integer('parent_id')->nullable();
             $table->string('description', 200)->nullable();
             

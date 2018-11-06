@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->uuid('id')->primary();
             $table->identity();
             $table->uuid('branch_id');
-            $table->smallInteger('status_id')->unsigned();
+            $table->smallInteger('product_status_id')->unsigned();
             $table->smallInteger('product_type_id')->unsigned();
             $table->string('name', 75);
             $table->active();
