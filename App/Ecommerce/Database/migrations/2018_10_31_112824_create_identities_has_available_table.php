@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 * @author Jorge Alberto Arenas Gutiérrez
 */
 
-class CreateEnrollmentsTable extends Migration
+class CreateIdentitiesHasAvailableTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,21 +19,17 @@ class CreateEnrollmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('enrollments', function (Blueprint $table) {
+        Schema::create('identities_has_available', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('payment_installment_id');
+            $table->uuid('payment_arrangement_id');
             $table->uuid('identity_id');
-            $table->smallInteger('enrollment_status_id')->unsigned();
             $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('payment_installment_id')
-                ->references('id')
-                ->on('payment_installments');
-            $table->foreign('enrollment_status_id')
-                ->references('id')
-                ->on('enrollment_status');
+            $table->foreign('payment_arrangement_id')
+                  ->references('id')
+                  ->on('payment_arrangements');
         });
     }
 
@@ -44,6 +40,6 @@ class CreateEnrollmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enrollments');
+        Schema::dropIfExists('identities_has_available');
     }
 }

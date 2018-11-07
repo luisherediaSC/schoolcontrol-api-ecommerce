@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 * @author Jorge Alberto Arenas Gutiérrez
 */
 
-class CreatePaymentsDetailsTable extends Migration
+class CreateProductsAttachmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,22 +19,19 @@ class CreatePaymentsDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments_details', function (Blueprint $table) {
+        Schema::create('products_attachments', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('payment_id');
-            $table->uuid('identity_id');
-            $table->uuid('enrollment_id');
-            $table->integer('quantity');
-            $table->decimal('amount', 18, 2);
+            $table->uuid('product_id');
+            $table->uuid('file_id');
+            $table->uuid('content_id');
+            $table->identity();
+            $table->active();
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('payment_id')
+            $table->foreign('product_id')
                   ->references('id')
-                  ->on('payments');
-            $table->foreign('enrollment_id')
-                  ->references('id')
-                  ->on('enrollments');
+                  ->on('products');
         });
     }
 
@@ -45,6 +42,6 @@ class CreatePaymentsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments_details');
+        Schema::dropIfExists('products_attachments');
     }
 }

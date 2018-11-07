@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration
             $table->foreign('branch_id')
                   ->references('id')
                   ->on('branches');
-            $table->foreign('status_id')
+            $table->foreign('product_status_id')
                   ->references('id')
                   ->on('products_status');
             $table->foreign('product_type_id')

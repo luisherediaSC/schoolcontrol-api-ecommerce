@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 * @author Jorge Alberto Arenas Gutiérrez
 */
 
-class CreateEnrollmentsTable extends Migration
+class CreatePaymentDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,21 +19,22 @@ class CreateEnrollmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('enrollments', function (Blueprint $table) {
+        Schema::create('payment_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('payment_installment_id');
+            $table->uuid('payment_id');
             $table->uuid('identity_id');
-            $table->smallInteger('enrollment_status_id')->unsigned();
-            $table->identity();
+            $table->integer('enrollment_id')->unsigned();
+            $table->integer('quantity');
+            $table->decimal('amount', 18, 2);
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('payment_installment_id')
-                ->references('id')
-                ->on('payment_installments');
-            $table->foreign('enrollment_status_id')
-                ->references('id')
-                ->on('enrollment_status');
+            $table->foreign('payment_id')
+                  ->references('id')
+                  ->on('payments');
+            $table->foreign('enrollment_id')
+                  ->references('id')
+                  ->on('enrollments');
         });
     }
 
@@ -44,6 +45,6 @@ class CreateEnrollmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enrollments');
+        Schema::dropIfExists('payment_details');
     }
 }
