@@ -21,8 +21,8 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->uuid('branch_id');
+            $table->identity();
             $table->string('name', 75);
             $table->timestampsCustom();
             $table->active();

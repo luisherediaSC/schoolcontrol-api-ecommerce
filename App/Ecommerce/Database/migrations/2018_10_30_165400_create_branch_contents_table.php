@@ -21,9 +21,9 @@ class CreateBranchContentsTable extends Migration
     {
         Schema::create('branch_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->integer('branch_model_id')->unsigned();
             $table->uuid('content_id');
+            $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             

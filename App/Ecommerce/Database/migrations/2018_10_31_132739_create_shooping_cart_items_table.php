@@ -21,7 +21,6 @@ class CreateShoopingCartItemsTable extends Migration
     {
         Schema::create('shooping_cart_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->uuid('shooping_cart_id');
             $table->uuid('product_id');
             $table->integer('quantity');
