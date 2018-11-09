@@ -21,8 +21,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->identity();
             $table->smallInteger('payment_method_id')->unsigned();
+            $table->identity();
             $table->decimal('total_amount', 18, 2);
             $table->timestampsCustom();
             $table->softDeletes();

@@ -21,9 +21,9 @@ class CreateShoopingCartTable extends Migration
     {
         Schema::create('shooping_cart', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->identity();
             $table->smallInteger('shooping_cart_status_id')->unsigned();
             $table->smallInteger('total_products');
+            $table->identity();
             $table->decimal('subtotal', 18, 2);
             $table->decimal('iva_apply', 18, 2);
             $table->decimal('total', 18, 2);

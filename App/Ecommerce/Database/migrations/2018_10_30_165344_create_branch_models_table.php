@@ -21,9 +21,9 @@ class CreateBranchModelsTable extends Migration
     {
         Schema::create('branch_models', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->uuid('branch_id');
             $table->uuid('model_id');
+            $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             

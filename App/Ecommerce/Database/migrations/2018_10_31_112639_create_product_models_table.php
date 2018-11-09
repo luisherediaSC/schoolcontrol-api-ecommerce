@@ -21,9 +21,9 @@ class CreateProductModelsTable extends Migration
     {
         Schema::create('product_models', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->uuid('product_id');
             $table->uuid('model_id');
+            $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             

@@ -21,9 +21,9 @@ class CreateProductContentsTable extends Migration
     {
         Schema::create('product_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->identity();
             $table->integer('product_model_id')->unsigned();
             $table->uuid('content_id');
+            $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             

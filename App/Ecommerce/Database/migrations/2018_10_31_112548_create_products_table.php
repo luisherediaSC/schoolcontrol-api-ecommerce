@@ -21,10 +21,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->identity();
             $table->uuid('branch_id');
             $table->smallInteger('product_status_id')->unsigned();
             $table->smallInteger('product_type_id')->unsigned();
+            $table->identity();
             $table->string('name', 75);
             $table->active();
             $table->timestampsCustom();
