@@ -11,6 +11,7 @@ $factory->define(Products::class, function (Faker $faker) {
     $identity = Identities::all()->random()->id;
     $name = $faker->unique()->word;
     $active = (int)$faker->boolean;
+    $mainPeriod = $faker->uuid;
     
     return [
         'branch_id'=>$branchId,
@@ -19,6 +20,7 @@ $factory->define(Products::class, function (Faker $faker) {
         'identity'=>$identity,
         'name'=>$name,
         'active'=>$active,
+        'main_period'=>$mainPeriod,
     ];
 });
 

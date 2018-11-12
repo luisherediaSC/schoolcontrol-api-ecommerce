@@ -14,4 +14,10 @@ Route::group([
     'middleware'=>'auth:api'
 ], function() {
     // require realpath(base_path() . '/routes/modules/xxxx.php');
+    
+    Route::group([
+        'prefix'=>'branches',
+    ], function() {
+        require realpath(base_path() . '/routes/modules/branches.php');
+    });
 });

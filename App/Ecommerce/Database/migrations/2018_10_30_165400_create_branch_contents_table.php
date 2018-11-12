@@ -21,15 +21,15 @@ class CreateBranchContentsTable extends Migration
     {
         Schema::create('branch_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('branch_model_id')->unsigned();
+            $table->uuid('branch_id');
             $table->uuid('content_id');
             $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('branch_model_id')
+            $table->foreign('branch_id')
                   ->references('id')
-                  ->on('branch_models');
+                  ->on('branches');
         });
     }
 
