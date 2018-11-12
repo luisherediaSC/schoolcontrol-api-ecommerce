@@ -21,15 +21,15 @@ class CreateProductContentsTable extends Migration
     {
         Schema::create('product_contents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_model_id')->unsigned();
+            $table->uuid('product_id');
             $table->uuid('content_id');
             $table->identity();
             $table->timestampsCustom();
             $table->softDeletes();
             
-            $table->foreign('product_model_id')
+            $table->foreign('product_id')
                   ->references('id')
-                  ->on('product_models');
+                  ->on('products');
         });
     }
 

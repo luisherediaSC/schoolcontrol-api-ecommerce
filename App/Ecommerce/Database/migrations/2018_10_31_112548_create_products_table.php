@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->timestampsCustom();
             $table->softDeletes();
             $table->string('description', 200)->nullable();
+            $table->uuid('main_period');
             
             $table->foreign('branch_id')
                   ->references('id')
