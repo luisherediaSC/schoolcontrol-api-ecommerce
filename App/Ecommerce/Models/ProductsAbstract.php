@@ -26,6 +26,7 @@ abstract class ProductsAbstract extends BaseUuid
         'createdAt',
         'updatedAt',
         'deleted_at',
-        'description'
+        'description',
+        'main_period'
     ];    
 }

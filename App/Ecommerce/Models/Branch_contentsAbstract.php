@@ -17,10 +17,10 @@ abstract class Branch_contentsAbstract extends Base
     public $incrementing = true;
     protected $fillable = [
         'id',
-        'branch_model_id',
+        'branch_id',
+        'content_id',
         'idIdentityCreated',
         'idIdentityUpdated',
-        'content_id',
         'createdAt',
         'updatedAt',
         'deleted_at'

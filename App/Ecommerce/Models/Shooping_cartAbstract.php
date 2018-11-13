@@ -17,9 +17,9 @@ abstract class Shooping_cartAbstract extends BaseUuid
     protected $fillable = [
         'id',
         'shooping_cart_status_id',
+        'total_products',
         'idIdentityCreated',
         'idIdentityUpdated',
-        'total_products',
         'subtotal',
         'iva_apply',
         'total',

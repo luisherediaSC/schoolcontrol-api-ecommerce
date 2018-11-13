@@ -20,4 +20,10 @@ Route::group([
     ], function() {
         require realpath(base_path() . '/routes/modules/branches.php');
     });
+    
+    Route::group([
+        'prefix'=>'categories',
+    ], function() {
+        require realpath(base_path() . '/routes/modules/categories.php');
+    });
 });
