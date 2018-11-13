@@ -19,8 +19,6 @@ abstract class Shooping_cart_itemsAbstract extends Base
         'id',
         'product_id',
         'shooping_cart_id',
-        'idIdentityCreated',
-        'idIdentityUpdated',
         'quantity',
         'amount',
         'subtotal',

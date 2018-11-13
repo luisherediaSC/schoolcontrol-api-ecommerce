@@ -17,10 +17,10 @@ abstract class Product_contentsAbstract extends Base
     public $incrementing = true;
     protected $fillable = [
         'id',
-        'product_model_id',
+        'product_id',
+        'content_id',
         'idIdentityCreated',
         'idIdentityUpdated',
-        'content_id',
         'createdAt',
         'updatedAt',
         'deleted_at'
