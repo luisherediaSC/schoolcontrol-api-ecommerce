@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Ecommerce\Http\Requests\Categories;
+namespace App\Ecommerce\Http\Requests\Products;
 
 use Melisa\Laravel\Http\Requests\Generic;
 use Melisa\Sanitizes\BeforeSanitize;
@@ -16,10 +16,12 @@ class CreateRequest extends Generic
     
     protected $rules = [
         'branch_id'=>'required|xss|size:36|exists:ecommerce.branches,id',
-        'active'=>'required|xss|boolean',
+        'product_status_id'=>'required|xss|integer|exists:ecommerce.products_status,id',
+        'product_type_id'=>'required|xss|integer|exists:ecommerce.product_types,id',
         'name' => 'required|xss|max:75',
-        'parent_id' => 'sometimes|xss|integer',
+        'active'=>'required|xss|boolean',
         'description'=>'sometimes|xss|max:200',
+        'main_period'=>'sometimes|xss|size:36',
     ];
     
     protected $sanitizes = [
@@ -27,8 +29,8 @@ class CreateRequest extends Generic
     ];
     
     protected $errorCode = [
-        'name'=>'ecommerce.fr.cat.name',
-        'description'=>'ecommerce.fr.cat.desc',
+        'name'=>'ecommerce.fr.pro.name',
+        'description'=>'ecommerce.fr.pro.desc',
     ];
     
 }
