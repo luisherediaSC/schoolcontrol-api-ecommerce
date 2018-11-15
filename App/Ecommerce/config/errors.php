@@ -17,4 +17,12 @@ return [
     'ecommerce.fr.cat.start'=>'',
     'ecommerce.fr.cat.limit'=>'',
     
+    /* products */
+    'ecommerce.fr.pro.name'=>'invalid product name',
+    'ecommerce.fr.pro.desc'=>'invalid description',
+    'ecommerce.fr.pro.id'=>'',
+    'ecommerce.fr.pro.page'=>'',
+    'ecommerce.fr.pro.start'=>'',
+    'ecommerce.fr.pro.limit'=>'',
+    
 ];

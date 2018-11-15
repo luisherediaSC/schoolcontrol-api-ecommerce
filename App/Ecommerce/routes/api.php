@@ -26,4 +26,10 @@ Route::group([
     ], function() {
         require realpath(base_path() . '/routes/modules/categories.php');
     });
+    
+    Route::group([
+        'prefix'=>'products',
+    ], function() {
+        require realpath(base_path() . '/routes/modules/products.php');
+    });
 });
