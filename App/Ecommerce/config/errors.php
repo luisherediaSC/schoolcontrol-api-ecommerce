@@ -25,4 +25,11 @@ return [
     'ecommerce.fr.pro.start'=>'',
     'ecommerce.fr.pro.limit'=>'',
     
+    /* payment_arrangements */
+    'ecommerce.fr.pay_arr.name'=>'invalid payment_arrangement name',
+    'ecommerce.fr.pay_arr.id'=>'',
+    'ecommerce.fr.pay_arr.page'=>'',
+    'ecommerce.fr.pay_arr.start'=>'',
+    'ecommerce.fr.pay_arr.limit'=>'',
+    
 ];
