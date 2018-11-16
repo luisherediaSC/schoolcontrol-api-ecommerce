@@ -2,7 +2,7 @@
 
 namespace App\Ecommerce\Http\Requests\Products;
 
-use App\Ecommerce\Http\Requests\Categories\CreateRequest;
+use App\Ecommerce\Http\Requests\Products\CreateRequest;
 
 /**
  * 

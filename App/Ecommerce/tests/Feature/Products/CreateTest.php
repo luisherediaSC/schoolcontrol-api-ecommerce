@@ -56,13 +56,13 @@ class CreateTest extends TestCase
             ->toArray();
         $response = $this->apiPost($this->endpoint, $product);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.pro.name');
+        $this->responseWithError($response, 'ecommerce.fr.pro.desc');
     }
     
     /**
      * @group products
      * @group create
-     * @group current
+     * @group completed
      * @test
      */
     public function success()
@@ -72,8 +72,8 @@ class CreateTest extends TestCase
         factory(Products_status::class)->create();
         $product= factory(Products::class)
             ->make()
-            ->toArray();dd($product);
-        $response = $this->apiPost($this->endpoint, $product);dd($response->getContent());
+            ->toArray();
+        $response = $this->apiPost($this->endpoint, $product);
         $this->responseCreatedSuccess($response);
         $this->assertDatabaseHas('products', [
             'name'=> $product['name'],
@@ -84,14 +84,13 @@ class CreateTest extends TestCase
     /**
      * @group products
      * @group create
-     * @group pending
+     * @group completed
      * @test
      */
     public function no_input()
     {
         $response = $this->apiPost($this->endpoint);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.cat.name');
     }
     
 }

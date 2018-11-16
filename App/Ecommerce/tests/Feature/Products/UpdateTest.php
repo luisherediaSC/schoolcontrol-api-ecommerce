@@ -5,7 +5,7 @@ namespace App\Ecommerce\Tests\Feature\Products;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Melisa\Laravel\Tests\ResponseTrait;
 use App\Ecommerce\Tests\TestCase;
-use App\Ecommerce\Models\{Categories, Branches};
+use App\Ecommerce\Models\{Branches, Product_types, Products_status, Products};
 
 /**
  * 
@@ -17,10 +17,10 @@ class UpdateTest extends TestCase
     use DatabaseTransactions;
     use ResponseTrait;
     
-    protected $endpoint = 'api/v1/categories';
+    protected $endpoint = 'api/v1/products';
     
     /**
-     * @group categories
+     * @group products
      * @group update
      * @group completed
      * @test
@@ -28,21 +28,23 @@ class UpdateTest extends TestCase
     public function invalid_name()
     {
         factory(Branches::class)->create();
-        $category = factory(Categories::class)
+        factory(Product_types::class)->create();
+        factory(Products_status::class)->create();
+        $product = factory(Products::class)
             ->create()
             ->toArray();
-        $categoryInvalidName = factory(Categories::class)
+        $productInvalidName = factory(Products::class)
             ->state('invalidName')
             ->make();
-        $category ['name']= $categoryInvalidName->name;
-        $endpoint = "{$this->endpoint}/{$category['id']}";
-        $response = $this->apiPut($endpoint, $category);
+        $product ['name']= $productInvalidName->name;
+        $endpoint = "{$this->endpoint}/{$product['id']}";
+        $response = $this->apiPut($endpoint, $product);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.cat.name');
+        $this->responseWithError($response, 'ecommerce.fr.pro.name');
     }
     
     /**
-     * @group categories
+     * @group products
      * @group update
      * @group completed
      * @test
@@ -50,21 +52,23 @@ class UpdateTest extends TestCase
     public function invalid_description()
     {
         factory(Branches::class)->create();
-        $category = factory(Categories::class)
+        factory(Product_types::class)->create();
+        factory(Products_status::class)->create();
+        $product = factory(Products::class)
             ->create()
             ->toArray();
-        $categoryInvalidDescription = factory(Categories::class)
+        $productInvalidDescription = factory(Products::class)
             ->state('invalidDescription')
             ->make();
-        $category ['description']= $categoryInvalidDescription->description;
-        $endpoint = "{$this->endpoint}/{$category['id']}";
-        $response = $this->apiPut($endpoint, $category);
+        $product ['description']= $productInvalidDescription->description;
+        $endpoint = "{$this->endpoint}/{$product['id']}";
+        $response = $this->apiPut($endpoint, $product);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.cat.desc');
+        $this->responseWithError($response, 'ecommerce.fr.pro.desc');
     }
     
     /**
-     * @group categories
+     * @group products
      * @group update
      * @group completed
      * @test
@@ -72,52 +76,49 @@ class UpdateTest extends TestCase
     public function success()
     {
         factory(Branches::class)->create();
-        $category = factory(Categories::class)
+        factory(Product_types::class)->create();
+        factory(Products_status::class)->create();
+        $product = factory(Products::class)
             ->create()
             ->toArray();
-        $endpoint = "{$this->endpoint}/{$category['id']}";
-        $response = $this->apiPut($endpoint, $category);
+        $endpoint = "{$this->endpoint}/{$product['id']}";
+        $response = $this->apiPut($endpoint, $product);
         $this->responseSuccess($response);
         $result = json_decode($response->getContent());
-        $this->assertDatabaseHas('categories', [
-            'name'=>$category['name'],
-            'id'=>$category['id'],
+        $this->assertDatabaseHas('products', [
+            'name'=>$product['name'],
+            'id'=>$product['id'],
             'idIdentityUpdated'=>$result->data->idIdentityUpdated,
             'updatedAt'=>$result->data->updatedAt,
-            'description'=>$category['description'],
         ], 'ecommerce');
     }
     
     /**
-     * @group categories
+     * @group products
      * @group update
      * @group completed
      * @test
      */
-    public function invalid_integer_id()
+    public function invalid_uuid_id()
     {
-        $endpoint = "{$this->endpoint}/asdfghj";
+        $endpoint = "{$this->endpoint}/1";
         $response = $this->apiPut($endpoint);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.cat.id');
+        $this->responseWithError($response, 'ecommerce.fr.pro.id');
     }
     
     /**
-     * @group categories
+     * @group products
      * @group update
      * @group completed
      * @test
      */
     public function no_exist_id()
     {
-        factory(Branches::class)->create();
-        $category = factory(Categories::class)
-            ->create()
-            ->toArray();
-        $endpoint = "{$this->endpoint}/-{$category['id']}";
-        $response = $this->apiPut($endpoint, $category);
+        $endpoint = "{$this->endpoint}/00aa00aa00aa00aa00aa00aa00aa00aa00aa";
+        $response = $this->apiPut($endpoint);
         $this->responseWithErrors($response);
-        $this->responseWithError($response, 'ecommerce.fr.cat.id');
+        $this->responseWithError($response, 'ecommerce.fr.pro.id');
     }
     
 }
