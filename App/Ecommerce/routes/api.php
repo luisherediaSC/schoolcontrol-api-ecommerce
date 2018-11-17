@@ -32,4 +32,10 @@ Route::group([
     ], function() {
         require realpath(base_path() . '/routes/modules/products.php');
     });
+    
+    Route::group([
+        'prefix'=>'payment_arrangements',
+    ], function() {
+        require realpath(base_path() . '/routes/modules/payment_arrangements.php');
+    });
 });

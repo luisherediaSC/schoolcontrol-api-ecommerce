@@ -13,7 +13,7 @@ $factory->define(Payment_arrangements::class, function (Faker $faker) {
     
     return [
         'product_id'=>$productId,
-        'identity'=>$identity,
+        'idIdentityCreated'=>$identity,
         'name'=>$name,
         'active'=>$active,
         'is_public'=>$isPublic,
