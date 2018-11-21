@@ -32,4 +32,11 @@ return [
     'ecommerce.fr.pay_arr.start'=>'',
     'ecommerce.fr.pay_arr.limit'=>'',
     
+    /* payment_installments */
+    'ecommerce.fr.pay_arr.name'=>'invalid payment_arrangement name',
+    'ecommerce.fr.pay_arr.id'=>'',
+    'ecommerce.fr.pay_arr.page'=>'',
+    'ecommerce.fr.pay_arr.start'=>'',
+    'ecommerce.fr.pay_arr.limit'=>'',
+    
 ];

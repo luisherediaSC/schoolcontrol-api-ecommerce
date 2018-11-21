@@ -75,7 +75,7 @@ class UpdateTest extends TestCase
     /**
      * @group payment_arrangements
      * @group update
-     * @group pending
+     * @group completed
      * @test
      */
     public function invalid_uuid_id()
@@ -89,7 +89,7 @@ class UpdateTest extends TestCase
     /**
      * @group payment_arrangements
      * @group update
-     * @group pending
+     * @group completed
      * @test
      */
     public function no_exist_id()
