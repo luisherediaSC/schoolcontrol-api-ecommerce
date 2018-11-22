@@ -38,4 +38,10 @@ Route::group([
     ], function() {
         require realpath(base_path() . '/routes/modules/payment_arrangements.php');
     });
+    
+    Route::group([
+        'prefix'=>'payment_installments',
+    ], function() {
+        require realpath(base_path() . '/routes/modules/payment_installments.php');
+    });
 });
