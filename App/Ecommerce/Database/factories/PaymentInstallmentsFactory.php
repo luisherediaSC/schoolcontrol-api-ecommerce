@@ -14,7 +14,7 @@ $factory->define(Payment_installments::class, function (Faker $faker) {
     
     return [
         'payment_arrangement_id'=>$paymentArrangementId,
-        'identity'=>$identity,
+        'idIdentityCreated'=>$identity,
         'order'=>$order,
         'base_amount'=>$baseAmount,
         'active'=>$active,

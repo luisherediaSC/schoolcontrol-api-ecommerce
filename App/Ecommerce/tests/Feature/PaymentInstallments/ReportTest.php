@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Melisa\Laravel\Tests\ResponseTrait;
 use App\Ecommerce\Tests\TestCase;
 use App\Ecommerce\Models\{Branches, Product_types, Products_status, Products};
-use App\Ecommerce\Models\Payment_arrangements;
+use App\Ecommerce\Models\{Payment_arrangements, Payment_installments};
 
 /**
  * 
@@ -18,10 +18,10 @@ class ReportTest extends TestCase
     use DatabaseTransactions;
     use ResponseTrait;
     
-    protected $endpoint = 'api/v1/payment_arrangements';
+    protected $endpoint = 'api/v1/payment_installments';
     
     /**
-     * @group payment_arrangements
+     * @group payment_installments
      * @group report
      * @group completed
      * @test
@@ -32,21 +32,22 @@ class ReportTest extends TestCase
         factory(Product_types::class)->create();
         factory(Products_status::class)->create();
         factory(Products::class)->create();
-        $paymentArrangement = factory(Payment_arrangements::class)->create();
-        $endpoint = "$this->endpoint/{$paymentArrangement->id}";
+        factory(Payment_arrangements::class)->create();
+        $paymentInstallment = factory(Payment_installments::class)->create();
+        $endpoint = "$this->endpoint/{$paymentInstallment->id}";
         $response = $this->apiGet($endpoint);
         $this->responseSuccess($response);
-        $this->assertDatabaseHas($paymentArrangement->getTable(), [
-            'id'=>$paymentArrangement->id
+        $this->assertDatabaseHas($paymentInstallment->getTable(), [
+            'id'=>$paymentInstallment->id
         ], 'ecommerce');
         /* verify minimum required fields of the frontend */
         $result = json_decode($response->getContent());
-        $this->assertTrue($result->data->id === $paymentArrangement->id);
+        $this->assertTrue($result->data->id === $paymentInstallment->id);
         $this->assertTrue(isset($result->data->name));
     }
     
     /**
-     * @group payment_arrangements
+     * @group payment_installments
      * @group report
      * @group completed
      * @test
@@ -58,7 +59,7 @@ class ReportTest extends TestCase
     }
     
     /**
-     * @group payment_arrangements
+     * @group payment_installments
      * @group report
      * @group completed
      * @test

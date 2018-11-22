@@ -33,7 +33,7 @@ return [
     'ecommerce.fr.pay_arr.limit'=>'',
     
     /* payment_installments */
-    'ecommerce.fr.pay_inst.name'=>'invalid payment_arrangement name',
+    'ecommerce.fr.pay_inst.name'=>'invalid payment_installments name',
     'ecommerce.fr.pay_inst.id'=>'',
     'ecommerce.fr.pay_inst.page'=>'',
     'ecommerce.fr.pay_inst.start'=>'',

@@ -23,7 +23,7 @@ class CreateTest extends TestCase
     /**
      * @group payment_installments
      * @group create
-     * @group current
+     * @group completed
      * @test
      */
     public function invalid_name()
@@ -45,7 +45,7 @@ class CreateTest extends TestCase
     /**
      * @group payment_installments
      * @group create
-     * @group pending
+     * @group completed
      * @test
      */
     public function success()
@@ -54,21 +54,22 @@ class CreateTest extends TestCase
         factory(Product_types::class)->create();
         factory(Products_status::class)->create();
         factory(Products::class)->create();
-        $paymentInstallment= factory(Payment_arrangements::class)
+        factory(Payment_arrangements::class)->create();
+        $paymentInstallment= factory(Payment_installments::class)
             ->make()
             ->toArray();
         $response = $this->apiPost($this->endpoint, $paymentInstallment);
         $this->responseCreatedSuccess($response);
-        $this->assertDatabaseHas('payment_arrangements', [
+        $this->assertDatabaseHas('payment_installments', [
             'name'=> $paymentInstallment['name'],
-            'product_id'=> $paymentInstallment['product_id'],
+            'payment_arrangement_id'=>$paymentInstallment['payment_arrangement_id'],
         ], 'ecommerce');
     }
     
     /**
      * @group payment_installments
      * @group create
-     * @group pending
+     * @group completed
      * @test
      */
     public function no_input()
