@@ -39,4 +39,10 @@ return [
     'ecommerce.fr.pay_inst.start'=>'',
     'ecommerce.fr.pay_inst.limit'=>'',
     
+    /* enrollments */
+    'ecommerce.fr.enr.id'=>'',
+    'ecommerce.fr.enr.page'=>'',
+    'ecommerce.fr.enr.start'=>'',
+    'ecommerce.fr.enr.limit'=>'',
+    
 ];
