@@ -14,6 +14,6 @@ $factory->define(Enrollments::class, function (Faker $faker) {
         'payment_installments_id'=>$paymentInstallmentId,
         'identity_id'=>$identityId,
         'enrollment_status_id'=>$enrollmentStatusId,
-        'identity'=>$identity,
+        'idIdentityCreated'=>$identity,
     ];
 });
